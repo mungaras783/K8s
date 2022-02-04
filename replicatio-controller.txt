@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+ name: ngrc
+ labels:
+  author: Sai
+  type: webserver
+  app: nginx
+spec:
+ replicas: 3
+ selector:
+  type: webserver
+ template:
+  metadata:
+   name: nginxpod
+   labels:
+    type: webserver
+    author: Sai
+    env: Dev
+  spec:
+   containers:
+    - name: nginxcont
+      image: nginx
+      ports:
+       - containerPort: 80
+...
